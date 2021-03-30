@@ -61,5 +61,6 @@ public class MenuManager {
 		System.out.print("Food ID:");
 		int foodID = input.nextInt();
 	}	
+	
 
 }
