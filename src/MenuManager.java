@@ -7,6 +7,7 @@ public class MenuManager {
 	    Scanner input = new Scanner(System.in);
 	    
 		while (num != 6) {
+			System.out.println("*** Food Management Menu ***");
 			System.out.println("1. Add Foods");
 			System.out.println("2. Delete Foods");
 			System.out.println("3. Edit Foods");
@@ -14,22 +15,51 @@ public class MenuManager {
 			System.out.println("5. Show a menu");
 			System.out.println("6. Exit");
 			System.out.println("Selsct one number between 1-6");
-			num = input.nextInt();
+			num = input.nextInt();			
 			switch(num) {
 			case 1:
-				System.out.print("Food Id:");
-				int foodId = input.nextInt();
-				System.out.print("Food Type:");
-				String foodType = input.next();
-				System.out.print("Food Name:");
-				String foodName = input.next();
+				addFood();
 				break;
 			case 2:
+				deleteFood();
+				break;
 			case 3:
+				editFood();
+				break;
 			case 4:
-				System.out.print("Food Id:");
-				int foodId2 = input.nextInt();
+				viewFood();
+				break;
 			}
 		}
 	}
+	
+	public static void addFood() {
+		Scanner input = new Scanner(System.in);
+		System.out.print("Food ID:");
+		int foodID = input.nextInt();
+		System.out.print("Food Type:");
+		String foodType = input.next();
+		System.out.print("Food Name:");
+		String foodName = input.next();
+	}
+	
+	public static void deleteFood() {
+		Scanner input = new Scanner(System.in);
+		System.out.print("Food ID:");
+		int foodID = input.nextInt();
+	}
+		
+	public static void editFood() {
+		Scanner input = new Scanner(System.in);
+		System.out.print("Food ID:");
+		int foodID = input.nextInt();		
+		
+	}
+	
+	public static void viewFood() {
+		Scanner input = new Scanner(System.in);
+		System.out.print("Food ID:");
+		int foodID = input.nextInt();
+	}	
+
 }
