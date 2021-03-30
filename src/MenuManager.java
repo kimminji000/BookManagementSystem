@@ -62,4 +62,5 @@ public class MenuManager {
 		int foodID = input.nextInt();
 	}	
 
+	
 }
