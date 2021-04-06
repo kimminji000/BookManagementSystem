@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FoodManager {
@@ -15,6 +16,7 @@ public class FoodManager {
 		food.type = input.next();
 		System.out.print("Food Name:");
 		food.name = input.next();
+		food.addlist();
 	}
 	
 	public void deleteFood() {

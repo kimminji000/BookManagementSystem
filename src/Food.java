@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class Food {
 	String name;
@@ -14,8 +15,13 @@ public class Food {
 		this.type=type;
 	}
 	
+	public void addlist() {
+		ArrayList<Food> foodlist = new ArrayList<Food>();
+		foodlist.add(new Food(name, id, type));
+	}
+	
 	public void printInfo() {
-		System.out.println("name:"+name+"id:"+id+"type:"+type);
+		System.out.println("name:"+name+" id:"+id+" type:"+type);
 	}
 
 }
