@@ -1,5 +1,4 @@
 package food;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Food {
@@ -7,15 +6,34 @@ public class Food {
 	protected String name;
 	protected int id;
 	protected String type;
+	protected int expirationdate;
 	
 	public Food() {
 		
 	}
 	
-	public Food(String name, int id, String type) {
+	public Food(FoodKind kind) {
+		this.kind=kind;
+	}
+	
+	public Food(String name, int id) {
+		this.name=name;
+		this.id=id;
+	}
+	
+	public Food(String name, int id, String type, int expirationdate) {
 		this.name=name;
 		this.id=id;
 		this.type=type;
+		this.expirationdate=expirationdate;
+	}
+	
+	public Food(FoodKind kind, String name, int id, String type, int expirationdate) {
+		this.kind=kind;
+		this.name=name;
+		this.id=id;
+		this.type=type;
+		this.expirationdate=expirationdate;
 	}
 	
 	public FoodKind getKind() {
@@ -49,9 +67,31 @@ public class Food {
 	public void setType(String type) {
 		this.type = type;
 	}
+	
+	public int getExpirationdate() {
+		return expirationdate;
+	}
+
+	public void setExpirationdate(int expirationdate) {
+		this.expirationdate = expirationdate;
+	}
 		
 	public void printInfo() {
-		System.out.println("name:"+name+" id:"+id+" type:"+type);
+		String skind="none";
+		switch(this.kind) {
+		case Unprocessed:
+			skind="Unproc.";
+			break;
+		case Processed:
+			skind="proc.";
+			break;
+		case Retort:
+			skind="Retort";
+			break;
+		default:
+		}
+		
+		System.out.println("kind:"+skind+" name:"+name+" id:"+id+" type:"+type+" expirationdate:"+expirationdate);
 	}
     
 	public void getUserInput(Scanner input) {
@@ -59,13 +99,17 @@ public class Food {
 		int id = input.nextInt();
 		this.setId(id);
 		
+		System.out.print("Food Name:");
+		String name = input.next();
+		this.setName(name);
+		
 		System.out.print("Food Type:");
 		String type = input.next(); 
 		this.setType(type);
 		
-		System.out.print("Food Name:");
-		String name = input.next();
-		this.setName(name);
+		System.out.print("Food Expirationdate:");
+		int expirationdate = input.nextInt();
+		this.setExpirationdate(expirationdate);
 	}
 	
 }

@@ -2,6 +2,7 @@ package food;
  
 public enum FoodKind {
 	Unprocessed,
-	Processed
+	Processed,
+	Retort
 
 }

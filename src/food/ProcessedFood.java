@@ -4,6 +4,10 @@ import java.util.Scanner;
 
 public class ProcessedFood extends Food {
 	
+	public ProcessedFood(FoodKind kind) {
+		super(kind);
+	}
+	
 	public void getUserInput(Scanner input) {
 		System.out.print("Food ID:");
 		int id = input.nextInt();
@@ -31,6 +35,10 @@ public class ProcessedFood extends Food {
 			else {		
 			}
 		}
+		
+		System.out.print("Food Expirationdate:");
+		int expirationdate = input.nextInt();
+		this.setExpirationdate(expirationdate);
 	}
 
 }
