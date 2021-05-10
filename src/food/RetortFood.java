@@ -2,7 +2,7 @@ package food;
 
 import java.util.Scanner;
 
-public class RetortFood extends Food {
+public class RetortFood extends Food implements FoodInput {
 	
 	public RetortFood(FoodKind kind) {
 		super(kind);

@@ -1,7 +1,7 @@
 package food;
 import java.util.Scanner;
 
-public class Food {
+public abstract class Food {
 	protected FoodKind kind = FoodKind.Processed;
 	protected String name;
 	protected int id;
@@ -76,40 +76,7 @@ public class Food {
 		this.expirationdate = expirationdate;
 	}
 		
-	public void printInfo() {
-		String skind="none";
-		switch(this.kind) {
-		case Unprocessed:
-			skind="Unproc.";
-			break;
-		case Processed:
-			skind="proc.";
-			break;
-		case Retort:
-			skind="Retort";
-			break;
-		default:
-		}
-		
-		System.out.println("kind:"+skind+" name:"+name+" id:"+id+" type:"+type+" expirationdate:"+expirationdate);
-	}
-    
-	public void getUserInput(Scanner input) {
-		System.out.print("Food ID:");
-		int id = input.nextInt();
-		this.setId(id);
-		
-		System.out.print("Food Name:");
-		String name = input.next();
-		this.setName(name);
-		
-		System.out.print("Food Type:");
-		String type = input.next(); 
-		this.setType(type);
-		
-		System.out.print("Food Expirationdate:");
-		int expirationdate = input.nextInt();
-		this.setExpirationdate(expirationdate);
-	}
+	public abstract void printInfo();
+
 	
 }

@@ -2,12 +2,14 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import food.Food;
+import food.FoodInput;
 import food.FoodKind;
 import food.ProcessedFood;
 import food.RetortFood;
+import food.UnprocessedFood;
 
 public class FoodManager {
-	ArrayList<Food> foods = new ArrayList<Food>();	
+	ArrayList<FoodInput> foods = new ArrayList<FoodInput>();	
 	Scanner input;
 	FoodManager(Scanner input){
 		this.input = input;	
@@ -15,7 +17,7 @@ public class FoodManager {
 
 	public void addFood() {
 		int kind = 0;
-		Food food;
+		FoodInput foodInput;
 		while (kind != 1 && kind !=  2) {
 			System.out.println("1.for Unprocessed");
 			System.out.println("2.for Processed");
@@ -23,21 +25,21 @@ public class FoodManager {
 			System.out.print("Select num 1, 2, or 3 for Food KInd:");
 			kind = input.nextInt();
 			if (kind == 1) {
-				food = new Food(FoodKind.Unprocessed);
-				food.getUserInput(input);
-				foods.add(food);
+				foodInput = new UnprocessedFood(FoodKind.Unprocessed);
+				foodInput.getUserInput(input);
+				foods.add(foodInput);
 				break;
 			}
 		    else if (kind == 2){
-		    	food = new ProcessedFood(FoodKind.Processed);
-		    	food.getUserInput(input);
-				foods.add(food);
+		    	foodInput = new ProcessedFood(FoodKind.Processed);
+		    	foodInput.getUserInput(input);
+				foods.add(foodInput);
 				break;
 			}
 		    else if (kind == 3){
-		    	food = new RetortFood(FoodKind.Retort);
-		    	food.getUserInput(input);
-				foods.add(food);
+		    	foodInput = new RetortFood(FoodKind.Retort);
+		    	foodInput.getUserInput(input);
+				foods.add(foodInput);
 				break;
 			}
 			else {
@@ -73,8 +75,8 @@ public class FoodManager {
 		System.out.print("Food ID:");
 		int foodId = input.nextInt();	
 		for (int i = 0; i<foods.size(); i++) {
-			Food food = foods.get(i);
-			if(food.getId() == foodId) {
+			FoodInput foodinput = foods.get(i);
+			if(foodinput.getId() == foodId) {
 				int num = 0 ;
 				while (num != 5) {
 					System.out.println("** Food Info Edit Menu **");
@@ -89,22 +91,22 @@ public class FoodManager {
 					case 1:
 						System.out.print("Food ID:");
 						int id = input.nextInt();
-						food.setId(id);
+						foodinput.setId(id);
 						break;
 					case 2:
 						System.out.print("Food Name:");
 						String name = input.next();
-						food.setName(name);
+						foodinput.setName(name);
 						break;
 					case 3:
 						System.out.print("Food Type:");
 						String type = input.next();
-						food.setType(type);
+						foodinput.setType(type);
 						break;
 					case 4:
 						System.out.print("Food Expirationdate:");
 						int expirationdate = input.nextInt();
-						food.setExpirationdate(expirationdate);
+						foodinput.setExpirationdate(expirationdate);
 						break;
 					}//switch
 				}//while 
