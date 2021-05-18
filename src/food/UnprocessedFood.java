@@ -2,45 +2,21 @@ package food;
 
 import java.util.Scanner;
 
-public class UnprocessedFood extends Food implements FoodInput {
+public class UnprocessedFood extends Food {
 	
 	public UnprocessedFood(FoodKind kind) {
 		super(kind);
 	}
 	
 	public void getUserInput(Scanner input) {
-		System.out.print("Food ID:");
-		int id = input.nextInt();
-		this.setId(id);
-		
-		System.out.print("Food Name:");
-		String name = input.next();
-		this.setName(name);
-		
-		System.out.print("Food Type:");
-		String type = input.next(); 
-		this.setType(type);
-		
-		System.out.print("Food Expirationdate:");
-		int expirationdate = input.nextInt();
-		this.setExpirationdate(expirationdate);
+		setFoodID(input);
+		setFoodName(input);
+		setFoodType(input);
+		setFoodExpirationdate(input);
 	}
 	
 	public void printInfo() {
-		String skind="none";
-		switch(this.kind) {
-		case Unprocessed:
-			skind="Unproc.";
-			break;
-		case Processed:
-			skind="Proc.";
-			break;
-		case Retort:
-			skind="Retort";
-			break;
-		default:
-		}
-		
+		String skind = getKindString();
 		System.out.println("kind:"+skind+" name:"+name+" id:"+id+" type:"+type+" expirationdate:"+expirationdate);
 	}
 

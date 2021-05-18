@@ -2,81 +2,49 @@ package food;
 
 import java.util.Scanner;
 
-public class RetortFood extends Food implements FoodInput {
+import exception.TypeFormatException;
+
+public class RetortFood extends GoodFood {
+	
+	protected String beforeprocessingtype;
 	
 	public RetortFood(FoodKind kind) {
 		super(kind);
 	}
 	
-	protected String beforeprocessingtype;
-	
 	public void getUserInput(Scanner input) {
-		System.out.print("Food ID:");
-		int id = input.nextInt();
-		this.setId(id);
-			
-		System.out.print("Food Name:");
-		String name = input.next();
-		this.setName(name);
-		
+		setFoodID(input);
+		setFoodName(input);
+		setFoodTypewithYN(input);
+		setFoodbeforeprocessingtypewithYN(input);
+		setFoodExpirationdate(input);
+	}
+	
+	public void setFoodbeforeprocessingtypewithYN(Scanner input) {
 		char answer = 'x';
-		while (answer != 'Y' && answer != 'y'&& answer != 'N' && answer != 'n')
-		{	
-			System.out.print("Do you have a Food Type? (Y/N)");
-			answer = input.next().charAt(0);
-			if (answer == 'Y' || answer == 'y') {
-				System.out.print("Food Type:");
-				String type = input.next(); 
-				this.setType(type);
-				break;
-			}
-			else if (answer== 'N' || answer == 'n') {
-				this.setType("");
-				break;
-			}
-			else {		
-			}
-		}
-		
-		answer = 'x';
-		while (answer != 'Y' && answer != 'y'&& answer != 'N' && answer != 'n')
-		{	
+		while (answer != 'Y' && answer != 'y'&& answer != 'N' && answer != 'n'){	
 			System.out.print("Do you have a before processing food Type? (Y/N)");
 			answer = input.next().charAt(0);
-			if (answer == 'Y' || answer == 'y') {
-				System.out.print("Before processing food Type:");
-				beforeprocessingtype = input.next(); 
-				break;
+			try {
+				if (answer == 'Y' || answer == 'y') {
+					setFoodType(input); 
+					break;
+				}
+				else if (answer== 'N' || answer == 'n') {
+					this.setType("");
+					break;
+				}
+				else {		
+				}
 			}
-			else if (answer== 'N' || answer == 'n') {
-				beforeprocessingtype = "";
-				break;
-			}
-			else {		
+			catch(TypeFormatException e) {
+				System.out.println("Incorrect Type Format. Put the Type that contains \'.\' ");
 			}
 		}
-		
-		
-		System.out.print("Food Expirationdate:");
-		int expirationdate = input.nextInt();
-		this.setExpirationdate(expirationdate);
 	}
 
 	public void printInfo() {
-		String skind="none";
-		switch(this.kind) {
-		case Unprocessed:
-			skind="Unproc.";
-			break;
-		case Processed:
-			skind="Proc.";
-			break;
-		case Retort:
-			skind="Retort";
-			break;
-		default:
-		}
-		
+		String skind = getKindString();
 		System.out.println("kind:"+skind+" name:"+name+" id:"+id+" type:"+type+" expirationdate:"+expirationdate+" before processing type:"+beforeprocessingtype);
 	}
 	
