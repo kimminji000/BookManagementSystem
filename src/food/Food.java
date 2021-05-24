@@ -1,9 +1,15 @@
 package food;
+import java.io.Serializable;
 import java.util.Scanner;
 
 import exception.TypeFormatException;
 
-public abstract class Food implements FoodInput{
+public abstract class Food implements FoodInput, Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4987181507940519168L;
+	
 	protected FoodKind kind = FoodKind.Processed;
 	protected String name;
 	protected int id;
@@ -103,7 +109,7 @@ public abstract class Food implements FoodInput{
 			type = input.next();
 			try {
 				this.setType(type);
-			} catch (TypeFormatException e) {
+			} catch(TypeFormatException e) {
 				System.out.println("Incorrect Type Format. Put the Type that contains \'.\' ");
 			}
 		}

@@ -1,17 +1,22 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import food.Food;
 import food.FoodInput;
 import food.FoodKind;
 import food.ProcessedFood;
 import food.RetortFood;
 import food.UnprocessedFood;
 
-public class FoodManager {
+public class FoodManager implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8693084375274866960L;
+	
 	ArrayList<FoodInput> foods = new ArrayList<FoodInput>();	
-	Scanner input;
+	transient Scanner input;
 	FoodManager(Scanner input){
 		this.input = input;	
 	}
