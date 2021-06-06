@@ -1,8 +1,10 @@
+package manager;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import food.Food;
 import food.FoodInput;
 import food.FoodKind;
 import food.ProcessedFood;
@@ -19,6 +21,10 @@ public class FoodManager implements Serializable{
 	transient Scanner input;
 	FoodManager(Scanner input){
 		this.input = input;	
+	}
+	
+	public void setScanner(Scanner input) {
+		this.input = input;
 	}
 
 	public void addFood() {
@@ -134,6 +140,14 @@ public class FoodManager implements Serializable{
 			foods.get(i).printInfo();
 		}
 	}	
+	
+	public int size() {
+		return foods.size();
+	}
+	
+	public FoodInput get(int index) {
+		return (Food) foods.get(index);
+	}
 		
 	public void showEditMenu() {
 		System.out.println("** Food Info Edit Menu **");

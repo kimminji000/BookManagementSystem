@@ -1,3 +1,4 @@
+package manager;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -6,6 +7,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
+import gui.WindowFrame;
 import log.EventLogger;
 
 public class MenuManager {
@@ -18,7 +21,11 @@ public class MenuManager {
     	if(foodManager==null) {
     		foodManager = new FoodManager(input);
     	}
+    	else {
+    		foodManager.setScanner(input);
+    	}
     	
+    	WindowFrame frame = new WindowFrame(foodManager); 
     	selectMenu(input, foodManager);
     	putObject(foodManager, "foodmanager.fer");
 	}

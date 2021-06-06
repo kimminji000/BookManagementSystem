@@ -9,10 +9,16 @@ public interface FoodInput {
 	public int getId();
 	
 	public void setId(int id);
+
+	public String getName(); 
 	
 	public void setName(String name);
 	
+	public String getType();
+	
 	public void setType(String type) throws TypeFormatException;
+
+	public int getExpirationdate();
 	
 	public void setExpirationdate(int expirationdate);
 	
