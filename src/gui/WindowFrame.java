@@ -20,7 +20,7 @@ public class WindowFrame extends JFrame{
 		
 		this.foodManager = foodManager;
 		menuselection = new MenuSelection(this);
-		foodadder = new FoodAdder(this);
+		foodadder = new FoodAdder(this, this.foodManager);
 		foodviewer = new FoodViewer(this, this.foodManager);
 		
 				

@@ -79,9 +79,6 @@ public class MenuManager {
 	
 	public static FoodManager getObject(String filename) {
 		FoodManager foodManager = null;
-		
-		
-		
 		try {
 			FileInputStream file = new FileInputStream(filename);
 			ObjectInputStream in = new ObjectInputStream(file);

@@ -26,7 +26,17 @@ public class FoodManager implements Serializable{
 	public void setScanner(Scanner input) {
 		this.input = input;
 	}
-
+	
+	public void addFood(String Id, String Name, String Type, String Expirationdate) {
+		FoodInput foodInput = new UnprocessedFood(FoodKind.Unprocessed);
+	    foodInput.getUserInput(input);
+    	foods.add(foodInput);
+	}
+	
+	public void addFood(FoodInput foodInput) {
+    	foods.add(foodInput);
+	}
+ 
 	public void addFood() {
 		int kind = 0;
 		FoodInput foodInput;
